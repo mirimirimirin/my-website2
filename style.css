@@ -1,0 +1,749 @@
+/* リセットとベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #F5F5F7;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* コンテナ */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 章の表示制御 */
+.chapter {
+    display: none;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.chapter.active {
+    display: block;
+}
+
+/* 章ヘッダー */
+.chapter-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.chapter-header h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #007AFF;
+    margin-bottom: 8px;
+}
+
+.chapter-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #333333;
+}
+
+.chapter-header .subtitle {
+    font-size: 1rem;
+    color: #666666;
+    font-weight: 400;
+}
+
+/* 第1章：診断画面 */
+.quiz-section {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #E5E5E7;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #007AFF;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 20%;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #666666;
+    text-align: center;
+    display: block;
+}
+
+.question-container h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333333;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.choice-btn {
+    padding: 20px;
+    border: 2px solid #E5E5E7;
+    border-radius: 12px;
+    background: white;
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.choice-btn:hover {
+    border-color: #007AFF;
+    background-color: #F0F8FF;
+    transform: translateY(-2px);
+}
+
+.choice-btn:active {
+    transform: translateY(0);
+}
+
+/* 結果画面 */
+.result-section {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.result-section.hidden {
+    display: none;
+}
+
+.result-header h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007AFF;
+    margin-bottom: 12px;
+}
+
+.result-header p {
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 30px;
+}
+
+.character-illustration {
+    margin: 30px 0;
+}
+
+.character-avatar {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.character-image-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.character-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.summary-character-image {
+    margin: 16px 0;
+    text-align: center;
+}
+
+.summary-character-image img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.character-traits {
+    text-align: left;
+    margin: 30px 0;
+}
+
+.character-traits h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333333;
+}
+
+.character-traits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.character-traits li {
+    padding: 12px 0;
+    border-bottom: 1px solid #F0F0F0;
+    color: #555555;
+    position: relative;
+    padding-left: 24px;
+}
+
+.character-traits li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #007AFF;
+    font-weight: bold;
+}
+
+.character-traits li:last-child {
+    border-bottom: none;
+}
+
+.suitable-jobs {
+    margin: 30px 0;
+}
+
+.suitable-jobs h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333333;
+}
+
+.job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.job-tag {
+    background: #F0F8FF;
+    color: #007AFF;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid #E0F0FF;
+}
+
+/* 第2章：タブ機能 */
+.tabs-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: #F8F8F8;
+    color: #666666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #007AFF;
+    border-bottom: 2px solid #007AFF;
+}
+
+.tab-btn:hover:not(.active) {
+    background: #F0F0F0;
+}
+
+.tab-content {
+    padding: 30px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.feedback-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    border: 2px solid #E5E5E7;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.feedback-textarea:focus {
+    outline: none;
+    border-color: #007AFF;
+}
+
+.hashtags-container {
+    margin-top: 20px;
+}
+
+.hashtags-container h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333333;
+}
+
+.hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.hashtag {
+    background: #F0F8FF;
+    color: #007AFF;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #E0F0FF;
+}
+
+/* 第3章：ネクストアクション */
+.strengths-summary {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.strengths-summary h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.character-summary h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #007AFF;
+    margin-bottom: 12px;
+}
+
+.character-summary ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.character-summary li {
+    padding: 8px 0;
+    color: #555555;
+    position: relative;
+    padding-left: 20px;
+}
+
+.character-summary li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #007AFF;
+    font-weight: bold;
+}
+
+.hashtags-summary h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333333;
+}
+
+.summary-hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.action-declaration {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.action-declaration h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.action-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 16px;
+    border: 2px solid #E5E5E7;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.action-textarea:focus {
+    outline: none;
+    border-color: #007AFF;
+}
+
+.action-hints {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.action-hints h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-btn {
+    padding: 16px;
+    border: 2px solid #E5E5E7;
+    border-radius: 12px;
+    background: white;
+    color: #333333;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.action-btn:hover {
+    border-color: #007AFF;
+    background-color: #F0F8FF;
+    transform: translateY(-2px);
+}
+
+/* 第4章：タイムライン */
+.post-form {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* コメント機能のスタイル */
+.comments-section {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #F0F0F0;
+}
+
+.comment-input-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #E5E5E7;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #007AFF;
+}
+
+.comment-btn {
+    background: #007AFF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.comment-btn:hover {
+    background: #0056CC;
+}
+
+.comments-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.comment-item:last-child {
+    border-bottom: none !important;
+}
+
+.post-form h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.post-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 16px;
+    border: 2px solid #E5E5E7;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.post-textarea:focus {
+    outline: none;
+    border-color: #007AFF;
+}
+
+.post-btn {
+    background: #007AFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.post-btn:hover {
+    background: #0056CC;
+}
+
+.timeline {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-card {
+    border: 1px solid #F0F0F0;
+    border-radius: 12px;
+    padding: 20px;
+    background: #FAFAFA;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #007AFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.post-author {
+    font-weight: 600;
+    color: #333333;
+}
+
+.post-content {
+    margin-bottom: 16px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.post-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.post-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.post-action:hover {
+    color: #007AFF;
+}
+
+.post-action.liked {
+    color: #FF3B30;
+}
+
+/* 共通ボタン */
+.next-chapter-btn {
+    background: #007AFF;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+.next-chapter-btn:hover {
+    background: #0056CC;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+}
+
+/* ユーティリティクラス */
+.hidden {
+    display: none !important;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+    
+    .chapter-header {
+        padding: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .chapter-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .quiz-section,
+    .result-section,
+    .tabs-container,
+    .strengths-summary,
+    .action-declaration,
+    .action-hints,
+    .post-form,
+    .timeline {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .choice-btn,
+    .action-btn {
+        padding: 16px;
+        font-size: 0.9rem;
+    }
+    
+    .next-chapter-btn {
+        padding: 14px 24px;
+        font-size: 1rem;
+        min-width: 180px;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chapter.active {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.post-card {
+    animation: fadeIn 0.3s ease-out;
+}

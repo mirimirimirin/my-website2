@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYL QUEST - キャリア発見Webアプリ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 第1章：CHOOSE YOUR LIFE 診断 -->
+    <section id="chapter1" class="chapter active">
+        <div class="container">
+            <header class="chapter-header">
+                <h1>第1章</h1>
+                <h2>CHOOSE YOUR LIFE</h2>
+                <p class="subtitle">あなたの選択傾向から、ポジティブな自己認識を発見しよう</p>
+            </header>
+
+            <!-- 診断画面 -->
+            <div id="quiz-section" class="quiz-section">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">1 / 5</span>
+                </div>
+
+                <div class="question-container">
+                    <h3 id="question-text">文化祭の準備、あなたはどの役割を選ぶ？</h3>
+                    <div class="choices-container" id="choices-container">
+                        <button class="choice-btn" data-value="planner">企画・進行管理</button>
+                        <button class="choice-btn" data-value="creative">装飾・デザイン</button>
+                        <button class="choice-btn" data-value="support">裏方・サポート</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 結果画面 -->
+            <div id="result-section" class="result-section hidden">
+                <div class="result-header">
+                    <h3 id="character-name">夢見る戦略家</h3>
+                    <p id="character-catchphrase">静かな情熱で、未来をデザインする</p>
+                </div>
+                
+                <div class="character-illustration">
+                    <div class="character-avatar">🎯</div>
+                    <div class="character-image-container" id="character-image-container">
+                        <!-- キャラクター画像がここに表示される -->
+                    </div>
+                </div>
+                
+                <div class="character-traits">
+                    <h4>あなたの特性</h4>
+                    <ul id="traits-list">
+                        <li>計画を立てるのが得意</li>
+                        <li>一人で深く考えるのが好き</li>
+                        <li>複雑な問題を解くことに喜びを感じる</li>
+                    </ul>
+                </div>
+                
+                <div class="suitable-jobs">
+                    <h4>向いている作業・ジャンル</h4>
+                    <div class="job-tags" id="job-tags">
+                        <span class="job-tag">プロジェクト管理</span>
+                        <span class="job-tag">データ分析</span>
+                        <span class="job-tag">研究開発</span>
+                        <span class="job-tag">コンテンツ企画</span>
+                    </div>
+                </div>
+                
+                <button class="next-chapter-btn" onclick="showChapter(2)">次の章へ進む</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第2章：他者から見た自分 -->
+    <section id="chapter2" class="chapter">
+        <div class="container">
+            <header class="chapter-header">
+                <h1>第2章</h1>
+                <h2>他者から見た自分</h2>
+                <p class="subtitle">診断結果を元に、他者と対話して客観的な自己像を発見しよう</p>
+            </header>
+
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tab1">① 自分っぽいと思われた部分は？</button>
+                    <button class="tab-btn" data-tab="tab2">② 意外だなと思われた部分は？</button>
+                    <button class="tab-btn" data-tab="tab3">③ 強みや向いていると言われたことは？</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="tab1" class="tab-panel active">
+                        <textarea class="feedback-textarea" placeholder="隣の席の人や友達に聞いてみて、どんな印象を持たれているか記録しましょう。"></textarea>
+                    </div>
+                    
+                    <div id="tab2" class="tab-panel">
+                        <textarea class="feedback-textarea" placeholder="自分では気づかなかった意外な一面について記録しましょう。"></textarea>
+                    </div>
+                    
+                    <div id="tab3" class="tab-panel">
+                        <textarea class="feedback-textarea" id="strengths-textarea" placeholder="周りの人から褒められたことや、向いていると言われたことを記録しましょう。"></textarea>
+                        <div class="hashtags-container">
+                            <h4>生成されたハッシュタグ</h4>
+                            <div class="hashtags" id="hashtags"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="next-chapter-btn" onclick="showChapter(3)">次の章へ進む</button>
+        </div>
+    </section>
+
+    <!-- 第3章：ネクストアクション -->
+    <section id="chapter3" class="chapter">
+        <div class="container">
+            <header class="chapter-header">
+                <h1>第3章</h1>
+                <h2>ネクストアクション</h2>
+                <p class="subtitle">これまでの気づきを統合し、具体的な「次の一歩」を宣言しよう</p>
+            </header>
+
+            <div class="strengths-summary">
+                <h3>あなたの強みと可能性</h3>
+                <div class="character-summary">
+                    <h4 id="summary-character-name">夢見る戦略家</h4>
+                    <div class="summary-character-image" id="summary-character-image">
+                        <!-- キャラクター画像がここに表示される -->
+                    </div>
+                    <ul id="summary-traits-list">
+                        <li>計画を立てるのが得意</li>
+                        <li>一人で深く考えるのが好き</li>
+                        <li>複雑な問題を解くことに喜びを感じる</li>
+                    </ul>
+                </div>
+                <div class="hashtags-summary">
+                    <h4>他者から見たあなた</h4>
+                    <div class="summary-hashtags" id="summary-hashtags"></div>
+                </div>
+            </div>
+
+            <div class="action-declaration">
+                <h3>私のネクストアクション</h3>
+                <textarea class="action-textarea" id="action-textarea" placeholder="例：夏休み中に、プログラミングの体験レッスンに参加する！"></textarea>
+            </div>
+
+            <div class="action-hints">
+                <h3>ヒントから選ぶ</h3>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showActionInfo('hassyadai')">HASSYADAIのイベント詳細を見る</button>
+                    <button class="action-btn" onclick="showActionInfo('instagram')">インスタDMで相談してみる</button>
+                    <button class="action-btn" onclick="showActionInfo('study-abroad')">留学エージェントの説明会を聞く</button>
+                    <button class="action-btn" onclick="showActionInfo('programming')">プログラミング教室の体験レッスンに申し込む</button>
+                </div>
+            </div>
+
+            <button class="next-chapter-btn" onclick="showChapter(4)">宣言して、タイムラインへ</button>
+        </div>
+    </section>
+
+    <!-- 第4章：冒険者のギルド -->
+    <section id="chapter4" class="chapter">
+        <div class="container">
+            <header class="chapter-header">
+                <h1>第4章</h1>
+                <h2>冒険者のギルド</h2>
+                <p class="subtitle">仲間と応援し合い、継続的なモチベーションを創出しよう</p>
+            </header>
+
+            <div class="post-form">
+                <h3>今日の冒険を記録しよう</h3>
+                <textarea class="post-textarea" id="post-textarea" placeholder="今日の進捗や気づきを共有しましょう！"></textarea>
+                <button class="post-btn" onclick="createPost()">投稿</button>
+            </div>
+
+            <div class="timeline">
+                <h3>冒険者たちのタイムライン</h3>
+                <div class="posts-container" id="posts-container">
+                    <!-- 投稿がここに動的に追加される -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
